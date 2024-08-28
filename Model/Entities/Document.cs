@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing.Constraints;
-using System.Diagnostics.SymbolStore;
-using System.Reflection.Metadata.Ecma335;
-
-namespace KopiusLibrary.Model.Entities
+﻿namespace KopiusLibrary.Model.Entities
 {
     public class Document
     {

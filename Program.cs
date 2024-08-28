@@ -34,6 +34,7 @@ builder.Services.AddDbContext<LibraryContext>(options => options.UseSqlServer(bu
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 

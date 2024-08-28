@@ -1,4 +1,5 @@
-﻿using KopiusLibrary.Model.DTOs;
+﻿using AutoMapper;
+using KopiusLibrary.Model.DTOs;
 using KopiusLibrary.Model.Entities;
 using KopiusLibrary.Model.Interfaces;
 using KopiusLibrary.Repositories;
@@ -14,17 +15,16 @@ namespace KopiusLibrary.Controllers
     public class BookController : ControllerBase
     {
         private readonly IBookRepository _bookRepository;
-        //Book book= new Book() { YearOfPublication=1867, ISBN="24345344", Title="prueba"};
         public BookController(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
 
         [HttpGet]
-
-        public ActionResult<IEnumerable<BookDetailsDTO>> GetBooks()
+        public ActionResult<IEnumerable<BookDto>> GetBook()
         {
-            return _bookRepository.GetAll().ToList();
+            return _bookRepository.GetAll();
+
         }
 
         [HttpGet("{title}")]

@@ -1,7 +1,4 @@
-﻿using KopiusLibrary.Model.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-
-namespace KopiusLibrary.Model.Entities
+﻿namespace KopiusLibrary.Model.Entities
 {
     public class Book :IEquatable<Book>
     {

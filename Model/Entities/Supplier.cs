@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-
-namespace KopiusLibrary.Model.Entities
+﻿namespace KopiusLibrary.Model.Entities
 {
     public class Supplier
     {

@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.DTOs
 {
-    public class PublisherDetailsDTO
+    public class PublisherDto
     {
         public string Name { get; set; }
     }

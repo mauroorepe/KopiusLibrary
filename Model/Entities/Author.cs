@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace KopiusLibrary.Model.Entities
+﻿namespace KopiusLibrary.Model.Entities
 {
     public class Author
     {
