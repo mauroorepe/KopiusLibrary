@@ -75,8 +75,11 @@ namespace KopiusLibrary.Model
                 .WithOne() 
                 .HasForeignKey(ab => ab.BookId);
 
+            modelBuilder.Entity<Author>()
+                .HasKey(a => a.Id);
+
             modelBuilder.Entity<AuthorBook>()
-                .HasKey(ab => new { ab.AuthorId, ab.BookId });
+                .HasKey(ab => ab.Id);
 
             modelBuilder.Entity<AuthorBook>()
                 .HasOne<Author>()
