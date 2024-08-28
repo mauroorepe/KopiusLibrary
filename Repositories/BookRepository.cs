@@ -1,4 +1,5 @@
 ﻿using KopiusLibrary.Model;
+using KopiusLibrary.Model.DTOs;
 using KopiusLibrary.Model.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,15 +15,40 @@ namespace KopiusLibrary.Repositories
             Context = context;
         }
 
-        public IEnumerable<Book> GetAll()
+        public IEnumerable<BookDetailsDTO> GetAll()
         {
             return Context.Books
-                .Include(b => b.AuthorBook)
-                    .ThenInclude(ab => ab.Author) 
-                .Include(b => b.BookGenre)
-                    .ThenInclude(bg => bg.Genre) 
-                .Include(b => b.Branch)
-                .Include(b => b.Publisher)
+               .Include(b => b.AuthorBook)
+                .ThenInclude(ab => ab.Author)
+               .Include(b => b.BookGenre)
+                .ThenInclude(bg => bg.Genre)
+               .Include(b => b.Branch)
+               .Include(b => b.Publisher)
+               .Select(b => new BookDetailsDTO
+                {
+                    Title = b.Title,
+                    Authors = b.AuthorBook.Select(ab => new AuthorDetailsDTO
+                    {
+                        Name = ab.Author.Name,
+                        Bio = ab.Author.Bio,
+                        BirthDay = ab.Author.BirthDay,
+                        DeathDate = ab.Author.DeathDate
+                    }),
+                    //Genres = b.BookGenre.Select(bg => new GenreDetails
+                    //{
+                    //    Name = bg.Genre.Name
+                    //}),
+                    //Branch = b.Branch == null ? null : new BranchDetails
+                    //{
+                    //    Address = b.Branch.Adress,
+                    //    PhoneNumber = b.Branch.PhoneNumber.ToString(),
+                    //    Email = b.Branch.Email
+                    //},
+                    //Publisher = b.Publisher == null ? null : new PublisherDetails
+                    //{
+                    //    Name = b.Publisher.Name
+                    //}
+                })
                 .ToList();
         }
         public IEnumerable<Book> GetByTitle(string title)

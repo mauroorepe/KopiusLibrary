@@ -1,4 +1,5 @@
-﻿using KopiusLibrary.Model.Entities;
+﻿using KopiusLibrary.Model.DTOs;
+using KopiusLibrary.Model.Entities;
 using KopiusLibrary.Model.Interfaces;
 using KopiusLibrary.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -21,7 +22,7 @@ namespace KopiusLibrary.Controllers
 
         [HttpGet]
 
-        public ActionResult<IEnumerable<Book>> GetBooks()
+        public ActionResult<IEnumerable<BookDetailsDTO>> GetBooks()
         {
             return _bookRepository.GetAll().ToList();
         }

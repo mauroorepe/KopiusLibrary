@@ -10,5 +10,7 @@ namespace KopiusLibrary.Model.Entities
         public DateTime BirthDay { get; set; }
         public DateTime DeathDate { get; set; }
 
+        public ICollection<AuthorBook> AuthorBook { get; set; }
+
     }
 }

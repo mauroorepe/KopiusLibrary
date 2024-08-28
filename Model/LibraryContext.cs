@@ -70,29 +70,47 @@ namespace KopiusLibrary.Model
             //    .WithMany() 
             //    .HasForeignKey(bg => bg.GenreId);
 
-            //modelBuilder.Entity<Book>()
-            //.HasMany(b => b.Authors)
-            //.WithMany(a => a.Books)
-            //.UsingEntity<Dictionary<string, object>>(
-            //    "AuthorBook",
-            //    j => j.HasOne<Author>().WithMany().HasForeignKey("AuthorId"),
-            //    j => j.HasOne<Book>().WithMany().HasForeignKey("BookId"),
-            //    j =>
-            //    {
-            //        j.HasKey("AuthorId", "BookId");
-            //});
+            modelBuilder.Entity<Book>()
+                .HasMany(b => b.AuthorBook)
+                .WithOne() 
+                .HasForeignKey(ab => ab.BookId);
+
+            modelBuilder.Entity<AuthorBook>()
+                .HasKey(ab => new { ab.AuthorId, ab.BookId });
+
+            modelBuilder.Entity<AuthorBook>()
+                .HasOne<Author>()
+                .WithMany(a => a.AuthorBook)
+                .HasForeignKey(ab => ab.AuthorId);
+
+            modelBuilder.Entity<AuthorBook>()
+                .HasOne<Book>()
+                .WithMany(b => b.AuthorBook)
+                .HasForeignKey(ab => ab.BookId);
 
             //modelBuilder.Entity<Book>()
-            //.HasMany(b => b.Genre)
-            //.WithMany(g => g.Books)
-            //.UsingEntity<Dictionary<string, object>>(
-            //    "BookGenre",
-            //    j => j.HasOne<Genre>().WithMany().HasForeignKey("GenreId"),
-            //    j => j.HasOne<Book>().WithMany().HasForeignKey("BookId"),
-            //    j =>
-            //    {
-            //        j.HasKey("GenreId", "BookId");
-            //});
+            //    .HasMany(b => b.AuthorBook)
+            //    .WithMany(a => a.Books)
+            //    .UsingEntity<Dictionary<string, object>>(
+            //        "AuthorBook",
+            //        j => j.HasOne<Author>().WithMany().HasForeignKey("AuthorId"),
+            //        j => j.HasOne<Book>().WithMany().HasForeignKey("BookId"),
+            //        j =>
+            //        {
+            //            j.HasKey("AuthorId", "BookId");
+            //    });
+
+            //modelBuilder.Entity<Book>()
+            //    .HasMany(b => b.BookGenre)
+            //    .WithMany(g => g.Books)
+            //    .UsingEntity<Dictionary<string, object>>(
+            //        "BookGenre",
+            //        j => j.HasOne<Genre>().WithMany().HasForeignKey("GenreId"),
+            //        j => j.HasOne<Book>().WithMany().HasForeignKey("BookId"),
+            //        j =>
+            //        {
+            //            j.HasKey("GenreId", "BookId");
+            //    });
 
             //modelBuilder.Entity<Book>()
             //    .HasOne(b => b.Branch)
