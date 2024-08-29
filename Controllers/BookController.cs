@@ -30,7 +30,7 @@ namespace KopiusLibrary.Controllers
         [HttpGet("{title}")]
         public IActionResult GetBookByTitle(string title)
         {
-            IEnumerable<Book> Books = _bookRepository.GetByTitle(title);
+            IEnumerable<BookDto> Books = _bookRepository.GetByTitle(title);
             if (Books == null)
             {
                 return NotFound();
@@ -41,7 +41,7 @@ namespace KopiusLibrary.Controllers
 
         [HttpPost]
 
-        public ActionResult AddBook([FromBody]Book newBook)
+        public ActionResult AddBook([FromBody]BookDto newBook)
         {
             if (newBook == null)
             {
@@ -55,7 +55,7 @@ namespace KopiusLibrary.Controllers
 
             _bookRepository.Add(newBook);
 
-            return CreatedAtAction(nameof(GetBookByTitle), new { id = newBook.Id }, newBook);
+            return Ok();
         }
     }
 }

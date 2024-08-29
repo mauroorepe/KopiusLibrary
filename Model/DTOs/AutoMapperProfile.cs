@@ -14,6 +14,33 @@ namespace KopiusLibrary.Model.DTOs
             CreateMap<Branch, BranchDto>();
             CreateMap<Genre, GenreDto>();
             CreateMap<Publisher, PublisherDto>();
+
+            CreateMap<BookDto, Book>()
+            .ForMember(dest => dest.AuthorBook, opt => opt.Ignore())
+            //    src.Authors.Select(authorDto => new AuthorBook
+            //    {
+            //        Author = new Author
+            //        {
+            //            Bio = authorDto.Bio,
+            //            Name = authorDto.Name,
+            //            BirthDay = authorDto.BirthDay,
+            //            DeathDate = authorDto.DeathDate
+            //        }
+            //    })
+            //))
+            .ForMember(dest => dest.BookGenre, opt => opt.Ignore());
+            //    src.Genres.Select(genreDto => new BookGenre
+            //    {
+            //        Genre = new Genre
+            //        {
+            //            Name = genreDto.Name
+            //        }
+            //    })
+            //));
+            CreateMap<AuthorDto, Author>();
+            CreateMap<BranchDto, Branch>();
+            CreateMap<GenreDto, Genre>();
+            CreateMap<PublisherDto, Publisher>();
         }
     }
 }
