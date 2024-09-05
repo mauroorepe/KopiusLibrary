@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Branch
+    public class Branch : BaseEntity
     {
         public Guid Id { get; set; }
         public string Address { get; set; }

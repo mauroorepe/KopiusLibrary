@@ -8,11 +8,13 @@ namespace KopiusLibrary.Repositories
     {
         ActionResult<IEnumerable<BookDto>> GetAll();
         IEnumerable<BookDto> GetByTitle(string title);
-        void Add (BookDto book);
-        void Delete (BookDto book);
-        Author GetAuthorByName(string name);
-        Genre GetGenreByName(string name);
-        Branch GetBranchByName(string Address);
-        Publisher GetPublisherByName(string name);
+        void Add(BookDto book);
+        Book BookByIsbn(string isbn);
+        void Update(Book book);
+        //Author AuthorByName(string name);
+        //Genre GenreByName(string name);
+        //Branch BranchByName(string Address);
+        //Publisher PublisherByName(string name);
+        //bool ValidateISBN(string ISBN, string title);
     }
 }

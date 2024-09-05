@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Discount
+    public class Discount : BaseEntity
     {
         public Guid Id { get; set; }
         public string Description { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Client
+    public class Client : BaseEntity
     {
         public Guid Id { get; set; }
         public string Email { get; set; }

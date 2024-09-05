@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Book :IEquatable<Book>
+    public class Book : BaseEntity, IEquatable<Book>
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Title { get; set; }
@@ -11,6 +11,7 @@
         public Branch Branch { get; set; }
         public string Prologue { get; set; }
         public Publisher? Publisher { get; set; }
+        public bool Available { get; set; } = true;
 
         public bool Equals(Book? other)
         {

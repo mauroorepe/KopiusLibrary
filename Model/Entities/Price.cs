@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Price
+    public class Price : BaseEntity
     {
         public Guid Id { get; set; }
         public DateTime StartDate { get; set; }

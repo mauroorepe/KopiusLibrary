@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class DocumentItem
+    public class DocumentItem : BaseEntity
     {
         public Guid Id { get; set; }
         public int Quantity { get; set; }

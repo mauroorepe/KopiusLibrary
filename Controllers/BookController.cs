@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using KopiusLibrary.Model.DTOs;
-using KopiusLibrary.Model.Entities;
-using KopiusLibrary.Model.Interfaces;
+﻿using KopiusLibrary.Model.DTOs;
 using KopiusLibrary.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace KopiusLibrary.Controllers
 {
@@ -48,6 +44,11 @@ namespace KopiusLibrary.Controllers
                 return BadRequest();
             }
 
+            //if (_bookRepository.ValidateISBN(newBook.ISBN, newBook.Title))//quantity, tabla intermedia entre sucursal y libro
+            //{
+            //    return BadRequest();
+            //}
+
             //if (string.IsNullOrEmpty(newBook.Title) || newBook.AuthorBook == null || !newBook.AuthorBook.Any() || newBook.BookGenre==null || !newBook.BookGenre.Any())
             //{
             //    return BadRequest("Invalid book data. Title and Authors are required.");
@@ -56,6 +57,20 @@ namespace KopiusLibrary.Controllers
             _bookRepository.Add(newBook);
 
             return Ok();
+        }
+
+        [HttpPatch("{isbn}")]
+        public ActionResult DeleteBook(string isbn)
+        {
+            var book = _bookRepository.BookByIsbn(isbn);
+            if (book != null)
+            {
+                book.Available = false;
+                _bookRepository.Update(book);
+                return NoContent();
+            }
+            return BadRequest();
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Reservation
+    public class Reservation : BaseEntity
     {
         public Guid Id { get; set; }
         public Status Status { get; set; }

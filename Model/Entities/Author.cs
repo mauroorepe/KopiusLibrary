@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Author
+    public class Author : BaseEntity
     {
         public Guid Id { get; set; } 
         public string Bio { get; set; }

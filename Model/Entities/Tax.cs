@@ -1,6 +1,6 @@
 ﻿namespace KopiusLibrary.Model.Entities
 {
-    public class Tax
+    public class Tax : BaseEntity
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
